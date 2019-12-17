@@ -8,17 +8,26 @@
 import os
 import uuid
 import tempfile
-import win32com.client
+import win32com.client as win32
 from .source_tie import tie
 from .txt2docx import txt2docx
 
 def first_40_pages(docx_file, dst_file):
-  app = win32com.client.DispatchEx("Word.Application")
+  print(dst_file)
+  app = win32.DispatchEx("Word.Application")
   app.Visible = 0
   app.DisplayAlerts = 0
   app.Documents.Open(docx_file)
-  doc = app.ActiveDocument
-  app.Quit()
+  try:
+    doc = app.ActiveDocument
+    doc.Repaginate()
+    # page_count = doc.ComputeStatistics(2)
+    app.Selection.GoTo(1, 1, 2)
+    doc.Bookmarks("\\Page").Range.Delete()
+    doc.SaveAs(dst_file, 16)
+    doc.Close(SaveChanges=0)
+  finally:
+    app.Quit()
 
 def last_40_pages(docx_file, dst_file):
   pass
