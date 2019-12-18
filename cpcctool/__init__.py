@@ -1,1 +1,2 @@
 from .cpcc_code_docx import gen_code_docx, docx_first_40_pages, docx_last_40_pages
+from .cpcc_count_code_lines import count_code_lines
