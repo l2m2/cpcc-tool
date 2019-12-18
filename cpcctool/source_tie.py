@@ -21,7 +21,7 @@ def tie(src_dirs, dst_file):
   output = dst_file
   if not output:
     output = 'output.txt'
-  includes = ['*.h', '*.cpp', '*.pro', '*.pri']
+  includes = ['*.h', '*.cpp', '*.pro', '*.pri', '*.js', '*.ts', '*.css', '*.less', '*.html']
   excludes = ['*\\tags\\*', '*\\thirdparty\\*', '*\\party3\\*', '*\\demo\\*']
   # transform glob patterns to regular expressions
   includes = r'|'.join([fnmatch.translate(x) for x in includes])
