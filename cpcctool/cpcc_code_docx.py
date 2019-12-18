@@ -12,7 +12,7 @@ import win32com.client as win32
 from .source_tie import tie
 from .txt2docx import txt2docx
 
-def first_40_pages(docx_file, dst_file):
+def docx_first_40_pages(docx_file, dst_file):
   app = win32.DispatchEx("Word.Application")
   app.Visible = 0
   app.DisplayAlerts = 0
@@ -31,7 +31,7 @@ def first_40_pages(docx_file, dst_file):
   finally:
     app.Quit()
 
-def last_40_pages(docx_file, dst_file):
+def docx_last_40_pages(docx_file, dst_file):
   app = win32.DispatchEx("Word.Application")
   app.Visible = 0
   app.DisplayAlerts = 0
