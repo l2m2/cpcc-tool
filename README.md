@@ -1,6 +1,10 @@
 # cpcc-tool
 申请软件著作权用到的一些工具，包括生成源代码Word文档，统计源码量等。
 
+```
+pip install cpcctool
+```
+
 **生成源代码前40页和后40页的文档示例**
 
 ```python
@@ -29,6 +33,14 @@ src_dirs = [
 cloc_exe = r"F:\workspace\l2m2\cpcc-tool\cloc-1.84.exe"
 count = count_code_lines(cloc_exe, src_dirs)
 print(count)
+```
+
+## Publish to PyPI
+
+```
+pip install --user --upgrade setuptools wheel twine
+python setup.py sdist bdist_wheel
+python -m twine upload dist/*
 ```
 
 ## Reference
