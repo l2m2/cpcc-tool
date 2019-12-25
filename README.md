@@ -1,11 +1,11 @@
 # cpcc-tool
-申请软件著作权用到的一些工具，包括生成源代码Word文档，统计源码量等。
+Some method for Software copyright application in China, including the generation of source code Word documents, source code statistics, etc.
 
 ```
 pip install cpcctool
 ```
 
-**生成源代码前40页和后40页的文档示例**
+**Example: Generate documentation for the first and last 40 pages of source code**
 
 ```python
   import uuid
@@ -18,11 +18,11 @@ pip install cpcctool
   dst_file = str(uuid.uuid4()) + ".docx"
   gen_code_docx(src_dirs, dst_file)
   dst_file = os.path.abspath(dst_file)
-  docx_first_40_pages(dst_file, r"xxx系统 XXX V2.0.0 源代码 前40页.docx")
-  docx_last_40_pages(dst_file, r"xxx系统 XXX V2.0.0 源代码 后40页.docx")
+  docx_first_40_pages(dst_file, r"xxxSystem XXX V2.0.0 Source Code first 40 pages.docx")
+  docx_last_40_pages(dst_file, r"xxxSystem XXX V2.0.0 Source Code last 40 pages.docx")
 ```
 
-**统计源代码总量示例**
+**Example: Statistics source code total lines**
 
 ```python
 from cpcctool import count_code_lines
