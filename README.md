@@ -18,8 +18,8 @@ pip install cpcctool
   dst_file = str(uuid.uuid4()) + ".docx"
   gen_code_docx(src_dirs, dst_file)
   dst_file = os.path.abspath(dst_file)
-  docx_first_40_pages(dst_file, r"xxxSystem XXX V2.0.0 Source Code first 40 pages.docx")
-  docx_last_40_pages(dst_file, r"xxxSystem XXX V2.0.0 Source Code last 40 pages.docx")
+  docx_first_n_pages(dst_file, r"xxxSystem XXX V2.0.0 Source Code first 40 pages.docx", 40)
+  docx_last_n_pages(dst_file, r"xxxSystem XXX V2.0.0 Source Code last 40 pages.docx", 40)
 ```
 
 **Example: Statistics source code total lines**

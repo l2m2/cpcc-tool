@@ -12,7 +12,7 @@ import win32com.client as win32
 from .source_tie import tie
 from .txt2docx import txt2docx
 
-def docx_first_40_pages(docx_file, dst_file):
+def docx_first_n_pages(docx_file, dst_file, n):
   app = win32.DispatchEx("Word.Application")
   app.Visible = 0
   app.DisplayAlerts = 0
@@ -21,7 +21,7 @@ def docx_first_40_pages(docx_file, dst_file):
     doc = app.ActiveDocument
     doc.Repaginate()
     page_count = doc.ComputeStatistics(2)
-    app.Selection.GoTo(1, 1, 40)
+    app.Selection.GoTo(1, 1, n)
     r = doc.Bookmarks("\\Page").Range
     app.Selection.GoTo(1, 1, page_count)
     r.End = doc.Bookmarks("\\Page").Range.End
@@ -31,7 +31,7 @@ def docx_first_40_pages(docx_file, dst_file):
   finally:
     app.Quit()
 
-def docx_last_40_pages(docx_file, dst_file):
+def docx_last_n_pages(docx_file, dst_file, n):
   app = win32.DispatchEx("Word.Application")
   app.Visible = 0
   app.DisplayAlerts = 0
@@ -42,7 +42,7 @@ def docx_last_40_pages(docx_file, dst_file):
     page_count = doc.ComputeStatistics(2)
     app.Selection.GoTo(1, 1, 1)
     r = doc.Bookmarks("\\Page").Range
-    app.Selection.GoTo(1, 1, page_count - 40)
+    app.Selection.GoTo(1, 1, page_count - n)
     r.End = doc.Bookmarks("\\Page").Range.End
     r.Delete()
     doc.SaveAs(dst_file, 16)

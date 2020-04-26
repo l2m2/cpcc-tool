@@ -7,7 +7,7 @@ with open("README.md", mode='r') as fh:
 
 setuptools.setup(
   name="cpcctool",
-  version="0.0.1",
+  version="0.0.2",
   author="l2m2",
   author_email="l2m2lq@gmail.com",
   description="CPCC Tool.",
