@@ -10,7 +10,7 @@ pip install cpcctool
 ```python
   import uuid
   import os
-  from cpcctool import gen_code_docx, docx_first_40_pages, docx_last_40_pages
+  from cpcctool import gen_code_docx, docx_first_n_pages, docx_last_n_pages
   src_dirs = [
     r"F:\workspace\xxx\code1\",
     r"F:\workspace\xxx\code2\"
