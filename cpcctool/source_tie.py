@@ -12,7 +12,7 @@ import fnmatch
 import re
 import ntpath
 
-def tie(src_dirs, dst_file):
+def tie(src_dirs, dst_file, add_fileinfo=False, remove_space_line=True):
   dirs = []
   if not src_dirs:
     dirs.append(os.getcwd())
@@ -35,11 +35,16 @@ def tie(src_dirs, dst_file):
       for f in files:
         with open(f, 'r', encoding='utf-8', errors='ignore') as fd2:
           print(f)
-          fd.write('----{name}----'.format(name=ntpath.basename(f)))
-          fd.write('\n')
-          fd.write(fd2.read())
-          fd.write('\n')
-          fd.write('----end-of-{name}----\n\n'.format(name=ntpath.basename(f)))
+          if add_fileinfo:
+            fd.write('----{name}----'.format(name=ntpath.basename(f)))
+            fd.write('\n')
+          if remove_space_line:
+            fd.writelines([line for line in fd2.readlines() if not line.isspace()])
+          else:
+            fd.write(fd2.read())
+          if add_fileinfo:
+            fd.write('\n')
+            fd.write('----end-of-{name}----\n\n'.format(name=ntpath.basename(f)))
   fd.close()
 
 if __name__ == "__main__":

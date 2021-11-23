@@ -9,6 +9,7 @@
 import os
 import sys
 from docx import Document
+from docx.shared import Pt
 
 def valid_xml_char_ordinal(c):
   codepoint = ord(c)
@@ -23,6 +24,10 @@ def valid_xml_char_ordinal(c):
 def txt2docx(text_file, docx_file):
   text_file = os.path.abspath(text_file)
   document = Document()
+  style = document.styles['Normal']
+  font = style.font
+  font.name = 'Times New Roman'
+  font.size = Pt(10.5)
   file_contents = []
   with open(text_file, 'r', encoding='utf-8') as fd:
     for line in fd:
