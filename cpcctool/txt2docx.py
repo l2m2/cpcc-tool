@@ -10,6 +10,7 @@ import os
 import sys
 from docx import Document
 from docx.shared import Pt
+from docx.enum.text import WD_LINE_SPACING
 
 def valid_xml_char_ordinal(c):
   codepoint = ord(c)
@@ -32,7 +33,9 @@ def txt2docx(text_file, docx_file):
   with open(text_file, 'r', encoding='utf-8') as fd:
     for line in fd:
       file_contents += (''.join(c for c in line if valid_xml_char_ordinal(c)))
-  document.add_paragraph(file_contents)
+  paragraph = document.add_paragraph(file_contents)
+  paragraph_format = paragraph.paragraph_format
+  paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
   document.save(docx_file)
 
 
